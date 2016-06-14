@@ -14,9 +14,11 @@ object SparkPi {
     val kind = new Text("TrustedApplicationTokenIdentifier")
     val trustAppToken = new Token(tokenBytes, "none".getBytes(), kind, kind)
 
+    /*
     val creds = new Credentials()
     creds.addToken(kind, trustAppToken)
-    //UserGroupInformation.getCurrentUser().addCredentials(creds)
+    UserGroupInformation.getCurrentUser().addCredentials(creds)
+    */
     UserGroupInformation.getCurrentUser().addToken(kind, trustAppToken)
 
     val conf = new SparkConf().setAppName("Spark Pi")
